@@ -1,0 +1,53 @@
+<%- include('../partials/header', { title }) %>
+<%- include('../partials/alerts', { message, error }) %>
+
+<div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
+  <div>
+    <h1 class="h2 mb-1">Productos</h1>
+    <p class="text-secondary mb-0">Gestiona el inventario y sus categorías.</p>
+  </div>
+  <a class="btn btn-primary" href="/productos/nuevo">Nuevo producto</a>
+</div>
+
+<div class="card border-0 shadow-sm">
+  <div class="table-responsive">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-light">
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Categorías</th>
+          <th class="text-end">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (productos.length === 0) { %>
+          <tr><td colspan="5" class="text-center text-secondary py-5">Aún no hay productos registrados.</td></tr>
+        <% } %>
+        <% productos.forEach((producto) => { %>
+          <tr>
+            <td class="fw-semibold"><%= producto.nombre %></td>
+            <td>Bs <%= Number(producto.precio).toFixed(2) %></td>
+            <td><span class="badge text-bg-<%= producto.stock > 0 ? 'success' : 'secondary' %>"><%= producto.stock %></span></td>
+            <td>
+              <% if (producto.categorias) { %>
+                <span class="text-secondary"><%= producto.categorias %></span>
+              <% } else { %>
+                <span class="text-secondary fst-italic">Sin categoría</span>
+              <% } %>
+            </td>
+            <td class="text-end text-nowrap">
+              <a class="btn btn-sm btn-outline-primary" href="/productos/<%= producto.id %>/editar">Editar</a>
+              <form class="d-inline" method="post" action="/productos/<%= producto.id %>/eliminar" onsubmit="return confirm('¿Eliminar este producto?')">
+                <button class="btn btn-sm btn-outline-danger" type="submit">Eliminar</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
