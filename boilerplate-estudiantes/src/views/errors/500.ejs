@@ -1,0 +1,15 @@
+<%- include('../partials/header', { title }) %>
+
+<section class="text-center py-5">
+  <p class="display-1 fw-bold text-danger mb-2">500</p>
+  <h1 class="h3">Error interno del servidor</h1>
+  <p class="text-secondary">Ocurrió un problema al procesar la solicitud.</p>
+
+  <% if (error) { %>
+    <pre class="error-detail text-start"><%= error instanceof Error ? error.stack : String(error) %></pre>
+  <% } %>
+
+  <a class="btn btn-primary" href="/">Volver al inicio</a>
+</section>
+
+<%- include('../partials/footer') %>

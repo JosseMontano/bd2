@@ -1,0 +1,26 @@
+<%- include('partials/header', { title }) %>
+
+<section class="welcome-card card border-0 shadow-sm mx-auto">
+  <div class="card-body p-4 p-md-5">
+    <span class="badge text-bg-primary mb-3">Boilerplate listo</span>
+    <h1 class="display-6 fw-bold">Bienvenido al proyecto</h1>
+    <p class="lead text-secondary"><%= courseName %></p>
+
+    <hr class="my-4">
+
+    <h2 class="h5">Tu trabajo comienza aquí</h2>
+    <ol class="text-secondary mb-4">
+      <li>Diseña y crea las tablas en <code>schema.sql</code>.</li>
+      <li>Implementa los controladores en <code>src/controllers</code>.</li>
+      <li>Define las rutas en <code>src/routes</code>.</li>
+      <li>Crea las vistas EJS dentro de <code>src/views</code>.</li>
+      <li>Utiliza consultas SQL parametrizadas con <code>mysql2/promise</code>.</li>
+    </ol>
+
+    <div class="alert alert-success mb-0" role="alert">
+      El servidor, TypeScript, EJS, Bootstrap y la conexión a MariaDB ya están configurados.
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
